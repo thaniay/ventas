@@ -70,14 +70,6 @@ namespace BL.Tecnologia
             return false;
         }
 
-        public void CancelarCambios()
-        {
-            foreach (var item in _contexto.ChangeTracker.Entries())
-            {
-                item.State = EntityState.Unchanged;
-                item.Reload();
-            }
-        }
 
         private Resultado validar(Producto Producto)
         {
@@ -109,12 +101,6 @@ namespace BL.Tecnologia
                 resultado.Correcto = false;
             }
 
-            if (Producto.TipoId == 0)
-            {
-                resultado.Incorrecto = "Seleccione una Tipo";
-                resultado.Correcto = false;
-            }
-
             return resultado;
         }
     }
@@ -126,8 +112,6 @@ namespace BL.Tecnologia
         public string Descripcion { get; set; }
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
-        public int TipoId { get; set; }
-        public Tipo Tipo { get; set; }
         public double Precio { get; set; }
         public int Inventario { get; set; }
         public byte[] Foto{ get; set; }

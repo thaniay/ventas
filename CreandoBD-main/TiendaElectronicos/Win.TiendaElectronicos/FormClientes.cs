@@ -105,13 +105,8 @@ namespace Win.TiendaElectronicos
 
         private void toolStripButtonCancelar_Click(object sender, EventArgs e)
         {
-            _Clientes.CancelarCambios();
             DesahibilarHabilitar(true);
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            Eliminar(0);
         }
     }
 }

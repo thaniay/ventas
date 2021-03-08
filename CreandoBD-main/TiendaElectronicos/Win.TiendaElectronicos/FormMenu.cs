@@ -86,7 +86,11 @@ namespace Win.TiendaElectronicos
             formLogin.ShowDialog();
         }
 
-     
+        private void generalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var formClientes = new FormClientes();

@@ -16,21 +16,17 @@ namespace Win.TiendaElectronicos
     {
         ProductosBL Productos;
         CategoriaBL Categorias;
-        TiposBL TiposBL;
 
         public FormProductos()
         {
             InitializeComponent();
 
             Productos = new ProductosBL();
+
             listaProductosBindingSource.DataSource = Productos.ObtenerProductos();
 
             Categorias = new CategoriaBL();
-            listaCategoriaBindingSource.DataSource = Categorias.ObtenerCategoria();
-
-            TiposBL = new TiposBL();
-            listaTiposBindingSource.DataSource = TiposBL.ObtenerCategoria();
-        }
+            listaCategoriaBindingSource.DataSource = Categorias.ObtenerCategoria();        }
 
         private void listaProductosBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -119,8 +115,8 @@ namespace Win.TiendaElectronicos
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            Productos.CancelarCambios();
             HabilitarDeshabilitar(true);
+            Eliminar(0);
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
