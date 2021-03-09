@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BL.Tecnologia
 {
-    public class Contexto2: DbContext
+    public class Contexto2 : DbContext
     {
-        public Contexto2(): base ("Clientes")
+        public Contexto2() : base("Clientes")
         {
 
         }
 
-        public DbSet <Cliente> Clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
     }
 }

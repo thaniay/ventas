@@ -13,21 +13,30 @@ namespace BL.Tecnologia
     public class ProductosBL
     {
         Contexto _contexto;
-        public BindingList<Producto> ListaProducto { get; set; }
+        public BindingList<Producto> ListaProductos { get; set; }
 
         public ProductosBL()
         {
 
             _contexto = new Contexto();
-            ListaProducto = new BindingList<Producto>();
+            ListaProductos = new BindingList<Producto>();
         }
 
         public BindingList<Producto> ObtenerProductos()
         {
             _contexto.Productos.Load();
-            ListaProducto =  _contexto.Productos.Local.ToBindingList();
-            return ListaProducto;
+            ListaProductos =  _contexto.Productos.Local.ToBindingList();
+            return ListaProductos;
         }
+    
+        public void cancelarcambios()
+       {
+           foreach (var item in _contexto.ChangeTracker.Entries())
+           {
+               item.State = EntityState.Unchanged;
+               item.Reload();
+           }
+       }
 
         public Resultado GuardarProducto(Producto Producto)
         {
@@ -46,22 +55,21 @@ namespace BL.Tecnologia
             
         }
 
-
-
+    
         public void AgregarProducto()
         {
-            var NuevoProducto = new Producto();
-            ListaProducto.Add(NuevoProducto);
+           var nuevoProducto = new Producto();
+           _contexto.Productos.Add(nuevoProducto);
 
         }
 
         public bool Eliminar(int id)
         {
-            foreach (var Producto in ListaProducto)
+            foreach (var Producto in ListaProductos)
             {
                 if (Producto.Id == id)
                 {
-                    ListaProducto.Remove(Producto);
+                    ListaProductos.Remove(Producto);
                     _contexto.SaveChanges();
                     return true;
                 }
@@ -95,9 +103,15 @@ namespace BL.Tecnologia
             }
 
 
+            if (Producto.TipoId == 0)
+            {
+                resultado.Incorrecto = "Seleccione un Tipo";
+                resultado.Correcto = false;
+            }
+
             if (Producto.CategoriaId == 0)
             {
-                resultado.Incorrecto = "Seleccione una Categoria";
+                resultado.Incorrecto = "Seleccione una categoria";
                 resultado.Correcto = false;
             }
 
@@ -112,6 +126,8 @@ namespace BL.Tecnologia
         public string Descripcion { get; set; }
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
+        public int TipoId { get; set; }
+        public Tipo Tipo { get; set; }
         public double Precio { get; set; }
         public int Inventario { get; set; }
         public byte[] Foto{ get; set; }
@@ -122,6 +138,7 @@ namespace BL.Tecnologia
         {
             Activo = true;
         }
+
     }
 
     

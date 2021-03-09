@@ -16,17 +16,22 @@ namespace Win.TiendaElectronicos
     {
         ProductosBL Productos;
         CategoriaBL Categorias;
+        TiposBL tiposBL;
 
         public FormProductos()
         {
             InitializeComponent();
 
-            Productos = new ProductosBL();
+          Productos = new ProductosBL();
+          listaProductosBindingSource.DataSource = Productos.ObtenerProductos();
 
-            listaProductosBindingSource.DataSource = Productos.ObtenerProductos();
+          Categorias = new CategoriaBL();
+          listaCategoriaBindingSource.DataSource = Categorias.ObtenerCategoria();
 
-            Categorias = new CategoriaBL();
-            listaCategoriaBindingSource.DataSource = Categorias.ObtenerCategoria();        }
+          tiposBL = new TiposBL();
+          listaTiposBindingSource.DataSource = tiposBL.ObtenerTipos();
+
+        }
 
         private void listaProductosBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -48,7 +53,7 @@ namespace Win.TiendaElectronicos
             if(Resultado.Correcto == true)
             {
                 listaProductosBindingSource.ResetBindings(false);
-                HabilitarDeshabilitar(true);
+                DeshabilitarHabilitarBotones(true);
                 MessageBox.Show("Producto Registrado");
             }
             else
@@ -62,10 +67,10 @@ namespace Win.TiendaElectronicos
             Productos.AgregarProducto();
             listaProductosBindingSource.MoveLast();
 
-            HabilitarDeshabilitar(false);
+            DeshabilitarHabilitarBotones(false);
         }
 
-        private void HabilitarDeshabilitar(bool valor)
+        private void DeshabilitarHabilitarBotones(bool valor)
         {
             bindingNavigatorMoveFirstItem.Enabled = valor;
             bindingNavigatorMoveLastItem.Enabled = valor;
@@ -115,8 +120,8 @@ namespace Win.TiendaElectronicos
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            HabilitarDeshabilitar(true);
-            Eliminar(0);
+            Productos.cancelarcambios();
+            DeshabilitarHabilitarBotones(true);
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
@@ -181,6 +186,16 @@ namespace Win.TiendaElectronicos
         private void button2_Click(object sender, EventArgs e)
         {
             fotoPictureBox.Image = null;
+        }
+
+        private void descripcionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,6 +32,15 @@ namespace BL.Tecnologia
             return ListaClientes;
         }
 
+        public void cancelarcambios()
+        {
+            foreach (var item in _contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
+        }
+
         public Respuesta GuardarCliente(Cliente cliente)
         {
             var respuesta = Validar(cliente);
