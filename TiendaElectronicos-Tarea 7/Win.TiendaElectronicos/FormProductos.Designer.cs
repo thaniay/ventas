@@ -36,8 +36,8 @@ namespace Win.TiendaElectronicos
             System.Windows.Forms.Label inventarioLabel;
             System.Windows.Forms.Label precioLabel;
             System.Windows.Forms.Label descripcionLabel1;
-            System.Windows.Forms.Label tipoIdLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProductos));
+            System.Windows.Forms.Label tipoIdLabel;
             this.IdLabel = new System.Windows.Forms.Label();
             this.listaProductosBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.listaProductosBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -125,15 +125,6 @@ namespace Win.TiendaElectronicos
             descripcionLabel1.Size = new System.Drawing.Size(55, 13);
             descripcionLabel1.TabIndex = 14;
             descripcionLabel1.Text = "Categoria:";
-            // 
-            // tipoIdLabel
-            // 
-            tipoIdLabel.AutoSize = true;
-            tipoIdLabel.Location = new System.Drawing.Point(89, 144);
-            tipoIdLabel.Name = "tipoIdLabel";
-            tipoIdLabel.Size = new System.Drawing.Size(31, 13);
-            tipoIdLabel.TabIndex = 17;
-            tipoIdLabel.Text = "Tipo:";
             // 
             // IdLabel
             // 
@@ -389,6 +380,15 @@ namespace Win.TiendaElectronicos
             // listaTiposBindingSource
             // 
             this.listaTiposBindingSource.DataSource = typeof(BL.Tecnologia.Tipo);
+            // 
+            // tipoIdLabel
+            // 
+            tipoIdLabel.AutoSize = true;
+            tipoIdLabel.Location = new System.Drawing.Point(89, 144);
+            tipoIdLabel.Name = "tipoIdLabel";
+            tipoIdLabel.Size = new System.Drawing.Size(31, 13);
+            tipoIdLabel.TabIndex = 17;
+            tipoIdLabel.Text = "Tipo:";
             // 
             // tipoIdComboBox
             // 
