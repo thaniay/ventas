@@ -1,4 +1,14 @@
-﻿namespace Win.TiendaElectronicos
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Win.TiendaElectronicos
 {
     partial class FormReporteVentas
     {
@@ -28,10 +38,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            
             this.SuspendLayout();
             // 
-            // crystalReportViewer1
+            //  crystalReportViewer1
             // 
             this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -42,7 +52,7 @@
             this.crystalReportViewer1.ShowGroupTreeButton = false;
             this.crystalReportViewer1.Size = new System.Drawing.Size(419, 359);
             this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            
             // 
             // FormReporteVentas
             // 
