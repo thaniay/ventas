@@ -47,6 +47,8 @@ namespace Win.TiendaElectronicos
 
             if (Resultado == true)
             {
+                Utils.NombreUsuario = "Hola Mundo";
+
                 this.Close();
             }
           //  else
@@ -68,6 +70,28 @@ namespace Win.TiendaElectronicos
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (textBox1.Text != "")
+                {
+                    textBox2.Focus();
+                }
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (textBox1.Text != "")
+                {
+                    button1_Click(null, null);
+                }
+            }
         }
     }
 }

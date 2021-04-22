@@ -25,8 +25,15 @@ namespace BL.Tecnologia
         public BindingList<Producto> ObtenerProductos()
         {
             _contexto.Productos.Load();
-            ListaProducto =  _contexto.Productos.Local.ToBindingList();
+            ListaProducto = _contexto.Productos.Local.ToBindingList();
             return ListaProducto;
+        }
+
+        public IEnumerable<Producto> ObtenerProductos(string buscar)
+        {
+            var descripcion = buscar.ToLower().Trim();
+            var resultado = _contexto.Productos.Where(r => r.Descripcion.ToLower() == descripcion).ToList();
+            return resultado;
         }
 
         public Resultado GuardarProducto(Producto Producto)

@@ -22,7 +22,8 @@ namespace Win.TiendaElectronicos
            
             var formLogin = new FormLogin();           
             formLogin.ShowDialog();
-        
+            toolStripStatusLabel1.Text= "Usuario:" + Utils.NombreUsuario;
+
         }
 
         private void atencionAlClienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,9 +75,9 @@ namespace Win.TiendaElectronicos
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var formProductos = new FormProductos();
-            formProductos.MdiParent = this;
-            formProductos.Show();
+            var FormProductos = new FormProductos();
+            FormProductos.MdiParent = this;
+            FormProductos.Show();
 
         }
 
@@ -147,6 +148,11 @@ namespace Win.TiendaElectronicos
             var formReporteProduto = new FormReporteProductos();
             formReporteProduto.MdiParent = this;
             formReporteProduto.Show();
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

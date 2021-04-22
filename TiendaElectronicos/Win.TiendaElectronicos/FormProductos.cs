@@ -121,6 +121,8 @@ namespace Win.TiendaElectronicos
 
         private void FormProductos_Load(object sender, EventArgs e)
         {
+            // TODO: esta línea de código carga datos en la tabla 'dataSet1.Categoria' Puede moverla o quitarla según sea necesario.
+            this.categoriaTableAdapter.Fill(this.dataSet1.Categoria);
 
         }
 
@@ -181,6 +183,17 @@ namespace Win.TiendaElectronicos
         private void button2_Click(object sender, EventArgs e)
         {
             fotoPictureBox.Image = null;
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                var buscar = textBox1.Text;
+
+                listaProductosBindingSource.DataSource = Productos.ObtenerProductos(buscar);
+            }
+
         }
     }
 }
